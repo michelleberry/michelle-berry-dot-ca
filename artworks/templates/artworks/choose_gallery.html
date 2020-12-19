@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'artworks/style.css' %}">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Online Art Gallery</title>
+</head>
+
+<body>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'start' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Galleries</li>
+    </ol>
+  </nav>
+  <ul class="nav justify-content-center">
+    <h1 class="display-4">Click on a door to enter that gallery.</h1>
+  </ul>
+  <br>
+  
+
+  <div class = "container-fluid">
+    {% if collection_list %}
+    <div class= "row justify-content-center">
+      {% for collection in collection_list %}
+      <div class="col">
+        <ul class="nav justify-content-center">
+          <h2>{{ collection.title }}</h2>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        {% for collection in collection_list %}
+        <div class="col">
+          <ul class="nav justify-content-center">
+            <form action="{% url 'collection_index' collection.id %}">
+              <button class="btn btn-link" id = "foo"><img class="img" src="{% static 'img/close_door.jpg' %}" onmouseover="src='../static/img/open_door2.jpg'" onmouseout="src='../static/img/close_door.jpg'" alt="" width="100%"></button>
+            </form>
+          </ul>
+        </div>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No collections are available.</p>
+      {% endif %}
+      
+    </div>
+      
+      
+  </div>
+</body>
+
+</html>
+{% endblock %}

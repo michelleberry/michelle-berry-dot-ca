@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Online Art Gallery</title>
+  </head>
+  <body>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'start' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'collection_index' thisCollection.id %}">{{ thisCollection.title }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ artPiece.title }}</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-md-5">
+        <img src="{% static artPiece.image %}" alt="" width="100%">
+      </div>
+        <div class="col-md-7">
+          <br>
+          <h1> {{artPiece.title}}</h1>
+          <br>
+          <h5>Description:</h5>
+          <p>{{ artPiece.description }}</p>
+          <br>
+          <h5>Medium:</h5>
+          <p>{{ artPiece.medium }}</p>
+          <br>
+          <h5>Year Created:</h5>
+          <p>{{ artPiece.yearCreated }}</p>
+      </div>
+    </div>
+  </body>
+{% endblock %}

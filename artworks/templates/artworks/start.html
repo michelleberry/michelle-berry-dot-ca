@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'artworks/style.css' %}">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Michelle's Website</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl">
+        <form action='https://drive.google.com/file/d/1TeJL0qKhaandwIRpr8qz1Z9dW6Y8XM-7/view?usp=sharing'>
+          <button class="btn btn-link"><img src="{% static 'img/leftv2.jpg' %}" alt="" width="100%"></button>
+        </form>
+      </div>
+      <div class="col-xl">
+        <form action='choose_gallery'>
+          <button class="btn btn-link"><img src="{% static 'artworks/img/rightv2.jpg' %}" alt="" width="100%"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+{% endblock %}
